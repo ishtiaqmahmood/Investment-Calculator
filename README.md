@@ -28,6 +28,7 @@ git clone https://github.com/ishtiaqmahmood/Investment-Calculator.git
 cd investment-calculator
 npm install
 npm run dev
+```
 
 ## 💬 Contributing
 Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
