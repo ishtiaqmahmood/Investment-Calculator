@@ -3,10 +3,12 @@ function UserInput({ onChange, userInput }) {
     <section id="user-input">
       <div className="input-group">
         <p>
-          <label>Initial Investment</label>
+          <label htmlFor="initial-investment">Initial Investment</label>
           <input
+            id="initial-investment"
             type="number"
             required
+            min="0"
             value={userInput.initialInvestment}
             onChange={(event) =>
               onChange("initialInvestment", event.target.value)
@@ -14,10 +16,12 @@ function UserInput({ onChange, userInput }) {
           />
         </p>
         <p>
-          <label>Annual Investment</label>
+          <label htmlFor="annual-investment">Annual Investment</label>
           <input
+            id="annual-investment"
             type="number"
             required
+            min="0"
             value={userInput.annualInvestment}
             onChange={(event) =>
               onChange("annualInvestment", event.target.value)
@@ -27,19 +31,23 @@ function UserInput({ onChange, userInput }) {
       </div>
       <div className="input-group">
         <p>
-          <label>Expected Return</label>
+          <label htmlFor="expected-return">Expected Return</label>
           <input
+            id="expected-return"
             type="number"
             required
+            min="0"
             value={userInput.expectedReturn}
             onChange={(event) => onChange("expectedReturn", event.target.value)}
           />
         </p>
         <p>
-          <label>Duration</label>
+          <label htmlFor="duration">Duration</label>
           <input
+            id="duration"
             type="number"
             required
+            min="1"
             value={userInput.duration}
             onChange={(event) => onChange("duration", event.target.value)}
           />

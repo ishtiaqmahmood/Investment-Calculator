@@ -2,10 +2,16 @@ import React from "react";
 import { calculateInvestmentResults, formatter } from "../util/investment";
 function Results({ input }) {
   const resultData = calculateInvestmentResults(input);
+
+  if (resultData.length === 0) {
+    return <p className="center">No data available.</p>;
+  }
+
   const initialInvestment =
     resultData[0].valueEndOfYear -
     resultData[0].interest -
     resultData[0].annualInvestment;
+
   return (
     <table id="result">
       <thead>
@@ -13,7 +19,7 @@ function Results({ input }) {
           <th>Year</th>
           <th>Investment Value</th>
           <th>Interest (year)</th>
-          <th>Total interest</th>
+          <th>Total Interest</th>
           <th>Invested Capital</th>
         </tr>
       </thead>
@@ -24,6 +30,7 @@ function Results({ input }) {
             yearData.annualInvestment * yearData.year -
             initialInvestment;
           const totalAmountInvested = yearData.valueEndOfYear - totalInterest;
+
           return (
             <tr key={yearData.year}>
               <td>{yearData.year}</td>
