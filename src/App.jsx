@@ -12,19 +12,26 @@ function App() {
   });
   function handleChange(inputIdentifier, newValue) {
     setUserInput((prevUserInput) => {
+      const updatedValue = newValue === "" ? "" : +newValue;
       return {
         ...prevUserInput,
-        [inputIdentifier]: +newValue,
+        [inputIdentifier]: updatedValue,
       };
     });
   }
-  const inputIsValid = userInput.duration >= 1;
+
+  const inputIsValid =
+    userInput.duration >= 1 &&
+    userInput.initialInvestment >= 0 &&
+    userInput.annualInvestment >= 0 &&
+    userInput.expectedReturn >= 0;
+
   return (
     <>
       <Header />
       <UserInput onChange={handleChange} userInput={userInput} />
       {!inputIsValid && (
-        <p className="center">Please enter a duration greater than zero.</p>
+        <p className="center">Please enter valid input values (duration &ge; 1, other values &ge; 0).</p>
       )}
       {inputIsValid && <Results input={userInput} />}
     </>
